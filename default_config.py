@@ -27,6 +27,11 @@ class Config():
     # if set to '0', scheduler does not run
     SCHEDULER_TIME = 0
 
+    # Delay in seconds during each iteration of the main loop, between checking
+    # for button presses. Prevents the Pi from overheating due to excessive CPU
+    # usage.
+    LOOP_DELAY = 0.1
+
     AUTOREPEAT = False  # True causes automatic start and repeat of media sequence. Defaults to False if not defined
     AUTOREPEAT_TOGGLE = { # Adds a gpio pin to read a toggle switch on startup to enable/disable AUTOREPEAT. NOTE: overrides AUTOREPEAT variable above
         'gpio_pin': None

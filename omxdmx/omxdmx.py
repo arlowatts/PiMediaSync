@@ -92,13 +92,15 @@ class omxPlayerMock():
 
 
 class OmxDmx(Thread):
-    def __init__(self, buttonEvent, killEvent, mediafile=None, dmxDevice="/dev/null", autorepeat=False, dmxChannels=[1], dmxDefaultVals=255, defaultTransition_t=0, sequence=[]):
+    def __init__(self, buttonEvent, killEvent, mediafile=None, dmxDevice="/dev/null", autorepeat=False, dmxChannels=[1], dmxDefaultVals=255, defaultTransition_t=0, sequence=[], loopDelay=0.1):
         super().__init__()
         self.logger = logging.getLogger("omxdmx")
         self.buttonEvent = buttonEvent
         self.killEvent = killEvent
 
         self.mediafile = mediafile
+
+        self.loopDelay = loopDelay
 
         self.player = self.playerFactory(self.mediafile, self.logger)
 
@@ -153,6 +155,8 @@ class OmxDmx(Thread):
 
         self.logger.debug("Waiting for video")
         while self.running:
+            sleep(self.loopDelay)
+
             if(self.buttonEvent.is_set()):
                 self.playing = True
                 self.logger.debug("Starting Video")

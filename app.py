@@ -143,7 +143,8 @@ if __name__ == "__main__":
                         dmxChannels=config['CHANNELS'],
                         dmxDefaultVals=config['DEFAULT_VALUE'],
                         defaultTransition_t=config['DEFAULT_TRANSITION_TIME'],
-                        sequence=config['LIGHTING_SEQUENCE'])
+                        sequence=config['LIGHTING_SEQUENCE'],
+                        loopDelay=config['LOOP_DELAY'])
 
     try:
         omxDmxThread.start()
