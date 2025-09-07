@@ -1,5 +1,5 @@
 [Unit]
-Description=display for miniature world, plays video and syncs lights. Starts on boot.
+Description=Sawmill display for Miniature World.
 After=multi-user.target
 
 [Service]
@@ -8,8 +8,7 @@ Restart=always
 RestartSec=3
 WorkingDirectory=/opt/pimediasync
 EnvironmentFile=/etc/pimediasync.conf
-ExecStart=/usr/bin/python3 app.py $APPLICATION_FLAGS
-
+ExecStart=/usr/bin/python3 /opt/pimediasync/app.py $APPLICATION_FLAGS
 
 [Install]
 WantedBy=multi-user.target
